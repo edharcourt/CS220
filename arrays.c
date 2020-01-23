@@ -2,7 +2,6 @@
 
 // global variable
 // It is visible in all functions. Do not use them!
-// Unless Harcourt says so
 int a_global_variable;
 
 void f(char chs[], int n) {
