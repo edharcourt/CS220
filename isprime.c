@@ -3,7 +3,8 @@
 #define TRUE 1     // macro definition 
 #define FALSE 0
 
-// Returns true if n is prime, false otherwise
+// Returns true if n is prime, otherwise return
+// the actual factor. 
 int isPrime(int n) {
     
     int i = 2;
