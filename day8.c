@@ -14,7 +14,9 @@ int main() {
     printf("%d\n", c);
 
     // 67 - 23
-    int d = 67 + (~23 + 1);
+    //int d = 67 + (~23 + 1);
+    int d = 67 + (~0b10111 + 1);
+    
     printf("%d\n", d);
 
     // print the location of variable d
