@@ -186,9 +186,11 @@ zipinfo **load_zips() {
 int main() {
 
 
-   print_zipinfo(find("11949", ziparray));
+   // load the array of zipcodes 
+   zipinfo **ziparray = load_zips(); 
+
+   // Looks for the the zipcode 13617 and print the info
+   print_zipinfo(find("13617", ziparray));
 
 
-   //zipinfo *info = parse_line("35004,AL,ACMAR,86.51557,33.584132\n");
-   //print_zipinfo(info);
 }
