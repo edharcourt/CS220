@@ -12,6 +12,18 @@ typedef struct {
 } zipinfo;
 
 
+// find returns a pointer to a zipinfo struct given a zipcode
+zipinfo *find(char *key, zipinfo *zipdb[]) {
+
+    int i = 0;
+    while (zipdb[i] != NULL && 
+           strcmp(key, zipdb[i]->zip) != 0) {
+        i++;
+    }
+  
+    return zipdb[i];
+}
+
 /*
  * parse_line extracts zip code info from a line and
  * returns a pointer to a zipinfo struct
@@ -141,16 +153,19 @@ void print_zipinfo(zipinfo *info) {
     printf("longitude: %.2f\n", info->lng);
 }
 
-/*
- * main program
- */
-int main() {
-
+zipinfo **load_zips() {
    const int MAX_LINE_LEN = 1024;
    char buff[MAX_LINE_LEN];
 
    // declare an array of pointers to zipinfo structs
-   zipinfo *ziparray[29470];  // zipcodes in file
+   // one extra cell for marking end of array
+   //zipinfo *ziparray[29471];  // zipcodes in file
+
+   // cannot return a pointer to a local variable in
+   // a function. We can only return space that has
+   // been malloced.
+   zipinfo **ziparray = malloc(29471 * sizeof(zipinfo *));
+
    int i = 0;
 
    while (fgets(buff, MAX_LINE_LEN, stdin) != NULL) {
@@ -158,7 +173,21 @@ int main() {
        i++;
    }
 
-   print_zipinfo(ziparray[--i]);
+   // mark the end of the array with a pointer to NULL
+   ziparray[i] = NULL;
+
+   return ziparray;
+
+}
+
+/*
+ * main program
+ */
+int main() {
+
+
+   print_zipinfo(find("11949", ziparray));
+
 
    //zipinfo *info = parse_line("35004,AL,ACMAR,86.51557,33.584132\n");
    //print_zipinfo(info);
