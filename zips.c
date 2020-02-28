@@ -157,6 +157,8 @@ zipinfo **load_zips() {
    const int MAX_LINE_LEN = 1024;
    char buff[MAX_LINE_LEN];
 
+   FILE *f = fopen("../CS220_data/zips.csv", "r");
+
    // declare an array of pointers to zipinfo structs
    // one extra cell for marking end of array
    //zipinfo *ziparray[29471];  // zipcodes in file
@@ -168,7 +170,7 @@ zipinfo **load_zips() {
 
    int i = 0;
 
-   while (fgets(buff, MAX_LINE_LEN, stdin) != NULL) {
+   while (fgets(buff, MAX_LINE_LEN, f) != NULL) {
        ziparray[i] = parse_line(buff);
        i++;
    }
