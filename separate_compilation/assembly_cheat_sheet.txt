@@ -1,0 +1,5 @@
+
+Instructions
+
+add r0, r1, r2       means r0 = r1 + r2
+mul r0, r1, r2             r0 = r1 * r2
