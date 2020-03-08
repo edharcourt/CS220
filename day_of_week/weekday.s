@@ -30,11 +30,11 @@ weekday:
     
 	// calculate x
 	lsr r7,r6,#2      // r7 is y0/4
-    sdiv r8,r6,r9     // r8 = y0/100
-    sdiv r11,r6,r10   // r10 not needed any longer
+    sdiv r8,r6,r9     // r8 = y0/100  (r9 no longer needed)
+    sdiv r9,r6,r10    // r10 not needed any longer
     add  r10, r6, r7  // r7 no longer needed  
     sub r10, r10, r8  
-    add r10, r10, r11 // x = y0 + y0/4 - y0/100 + y0/400 
+    add r10, r10, r9  // x = y0 + y0/4 - y0/100 + y0/400 
 
     // only need r4, r5, r0, r1, r2
 	// calculate m0
