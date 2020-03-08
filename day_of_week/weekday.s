@@ -49,7 +49,7 @@ weekday:
     mul r9, r9, r6
     sdiv r9, r9, r5 
     add r9, r9, r10
-    add r9, r9, r1 
+    add r9, r9, r0
     
     // numerator in r9, denominator in r8
     // r = x % y, q = x / y, r = x - qy
