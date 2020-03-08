@@ -24,6 +24,19 @@ zipinfo *find(char *key, zipinfo *zipdb[]) {
     return zipdb[i];
 }
 
+int count_city_state(char *city, char *state, zipinfo **zipdb) {
+
+    int count = 0;
+    int i = 0;
+    while (zipdb[i] != NULL) {
+        if (strcmp(city, zipdb[i]->city) == 0 &&
+            strcmp(state, zipdb[i]->state) == 0)
+            count++;
+        i++;
+    }
+    return count;
+}
+
 /*
  * parse_line extracts zip code info from a line and
  * returns a pointer to a zipinfo struct
@@ -191,8 +204,9 @@ int main() {
    // load the array of zipcodes 
    zipinfo **ziparray = load_zips(); 
 
+   printf("%d\n", count_city_state("NEW YORK", "NY", ziparray));
+   printf("%d\n", count_city_state("NEW YORK", "CA", ziparray));
+
    // Looks for the the zipcode 13617 and print the info
    print_zipinfo(find("13617", ziparray));
-
-
 }

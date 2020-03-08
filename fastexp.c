@@ -13,13 +13,12 @@ int intpow(int x, int y) {
 }
 
 // command line arguments
-int main(int argc, char * argv[]) {
+int main(int argc, char **argv) {
  
     // argc argument count
     // argv is an array of strings
     if (argc > 2) {
         printf("%d\n", intpow(atoi(argv[1]), atoi(argv[2])));
     }
-
     return 0;
 } 
