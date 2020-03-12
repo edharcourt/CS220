@@ -1,0 +1,1 @@
+extern int weekday(int month, int day, int year);
