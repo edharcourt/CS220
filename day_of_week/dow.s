@@ -20,6 +20,8 @@ weekday:
     sdiv r3, r3, r4  // r3 = (14 - month) / 12 
     sub r2, r2, r3
 
+    // HW4 is to finish this function
+
     mov r0, r2 
     pop {r4}
     bx lr
