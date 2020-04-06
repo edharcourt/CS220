@@ -1,4 +1,4 @@
-.global max
+.global max, absmax
 .text
 
 /*
@@ -17,3 +17,5 @@ max:
 else:
       mov r0, r1
       bx lr
+      
+

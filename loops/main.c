@@ -1,8 +1,6 @@
 #include <stdio.h>
-
-extern int smallest_div(int n);
+#include "util.h"
 
 int main() {
-	printf("%d\n", smallest_div(35));
-	return 0;  
+    printf("%d %d\n", max(3,4), max(4,3));
 }
