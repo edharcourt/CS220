@@ -1,0 +1,89 @@
+Registers
+
+R0 - R3    parameters, temporaries by the function, you don't have to worry 
+           about saving them *unless* you call another function.
+           caller saved registers. If you need them to be saved
+           across a function call then it is your (the function that is 
+           doing the calling) job to save them
+           
+R4 - R12   When you call a function you can assume that these registers
+           will not be changed. If f calls g and f needs the register 
+           then it can assume g saved it if it used it.  But ... 
+           since f needs R4 (for example) is must save it for whomever
+           callled f.  Callee saved saved registers 
+           f is the caller and g is the callee. 
+           
+R13 - Stack Pointer (SP)
+R14 - Link Register (LR)
+R15 - Program Counter (PC)
+CPSR - Current Program Status Register, results of comparisons
+
+
+bl label  branch and link to the instruction at the address of label.
+            Put the address at label into the PC.
+            It puts the address of the next instruction into the 
+            link register (LR).  
+
+bx lr   banch and exchange if puts the address of LR into PC.
+
+
+
+
+Instructions
+
+add r0, r1, r2       means r0 = r1 + r2
+mul r0, r1, r2             r0 = r1 * r2
+sdiv r0,r1,r2        signed division
+bx lr                branch and exchange link register 
+mov r1, #27          move constant 27 into r1
+b label              jump to the label unconditionally
+
+The unconditional branch instruction
+
+loop:
+      ...
+      ...
+      b loop   // jump to the loop label  b = branch
+      
+Branch or jump based on a condition
+
+cmp r0, #10   // puts the result in the CPSR register
+              // current program stats register
+              // LT, LE, GT, GE, EQ, NE
+blt loop      // if r0 is less than 10 branch to loop, branch less than
+add r0, r1, r2 // goes here if cmp is false
+
+movn r0, r1   // move not, invert the bits in r1 and assign to r0
+              // r0 = ~r1;
+and r0, r1, r2 // bitwise and  r0 = r1 & r2  (flexible second operand) 
+orr r0, r1, r2 // bitwise or   r0 = r1 | r2  (flex second op)
+lsl r0, r1, r2 // logical shift left r0 = r1 << r2
+lsr r0, r1, r2 // logical shift right (always shifts a 0 in)
+asr r0, r1, r2 // arithmetic shift right (shifts in a sign bit)
+               // negative shift in a 1 and if positive shift in a 0
+
+// 4 bit two's complement
+0b1011 = -5    0b1011 >> 1 = 0b1101 
+
+--------------------------------------------------------------------------------------------
+
+0x76e6b718 - address after the instruction that called main because
+             main needs to know where to return to
+
+Link register
+-------------
+0x76e6b718  got overwritten by 
+0x103dc     got overwritten by 
+0x103f0
+
+push      {lr}            ; (str lr, [sp, #-4]!)
+                            store lr at sp-4 
+
+pop       {lr}            ; (ldr lr, [sp], #4) 
+                           load from memory the lr at sp+4
+
+
+
+
+
+
