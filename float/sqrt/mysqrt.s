@@ -4,7 +4,6 @@
 .text
 
 /*
-
 double mysqrt(double n) {
     const double epsilon = 1e-6;
     double r = n;

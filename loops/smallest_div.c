@@ -12,5 +12,5 @@ int smallest_div(int n) {
      while (n % i != 0) {
          i = i + 1;
      } 
-    
+     return i; 
 }

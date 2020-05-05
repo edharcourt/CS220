@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "util.h"
+extern int smallest_div(int n);
 
 int main() {
-    printf("%d %d\n", max(3,4), max(4,3));
+    printf("%d\n", smallest_div(26693*27329)); //  729492997
 }
